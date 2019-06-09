@@ -8,7 +8,7 @@ class Home extends Component{
 
   state={
     word:"",
-    product: {}
+    product: null
   }
 
   onChange= (e) => {
@@ -22,14 +22,14 @@ class Home extends Component{
     axios.get(`https://www.liverpool.com.mx/tienda/?s=${word}&d3106047a194921c01969dfdec083925=json`)
       .then((res)=>{
         // res.json(res.data)
-        console.log("%c liver","color:orange",res.data.contents[0].mainContent[3].contents[0].records[0].largeImage)
-        this.setState({product:res.data.contents[0].mainContent[3].contents[0].records[0].largeImage})
+        console.log("%c liver","color:orange",res.data.contents[0].mainContent[3].contents[0].records)
+        this.setState({product:res.data.contents[0].mainContent[3].contents[0].records})
       })
       .catch(err=>console.log("err liver"))
   }
 
   componentWillMount() {
-    this.findProduct()
+
   }
 
   render() {
@@ -49,11 +49,34 @@ class Home extends Component{
         </form>
       </div>
       </nav>
-        <Row className="container">
+        <Row className="pad">
           <Button onClick={this.findProduct}> buscar</Button>
-          <TableProduct
-            product={product}
-          />
+        </Row>
+
+        <Row className="container">
+
+          {
+            product
+            ?
+              <>
+                {
+                  product
+                    .map((el,i)=>{
+                      return(
+                        <TableProduct
+                          key={i}
+                          nameProduct={el.productDisplayName}
+                          priceProduct={el.maximumListPrice}
+                          imageProduct={el.smallImage}
+
+                        />
+                        )
+
+                    })
+                }
+              </>
+            : <p>Usa la barra de búsqueda para buscar tu producto</p>
+          }
         </Row>
       </>
     )

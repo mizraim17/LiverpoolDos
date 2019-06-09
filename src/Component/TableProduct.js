@@ -1,20 +1,37 @@
 import React from 'react'
-import {Card,Table} from 'react-materialize'
+import {Card,Table,Row,Col,CardTitle} from 'react-materialize'
+import "../css/tableProduct.css"
 
-const TableProduct = ()=> {
+
+const TableProduct = (props)=> {
   return(
-    <Card>
-      <Table  responsive={true} className="white">
-        <tbody>
-        <tr>
-          <td><strong> Nombre</strong></td>
-        </tr>
-        <tr>
-          <td><strong> Producto</strong></td>
-        </tr>
-        </tbody>
-      </Table>
-    </Card>
+
+
+      <Col m={4} s={12} className="apilar">
+        <Card
+          key ={props.i}
+          className="z-depth-2 cards "
+          header={
+
+            <CardTitle
+            className=" cards "
+            image={props.imageProduct}
+            title ="hola"
+
+            >
+              {props.priceProduct}
+            </CardTitle>
+          }
+          actions={
+            <a href="">   {props.priceProduct}</a>
+          }>
+          {props.nameProduct}
+
+        </Card>
+      </Col>
+
+
+
   )
 }
 export default TableProduct
