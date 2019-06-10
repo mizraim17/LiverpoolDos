@@ -10,6 +10,11 @@
     padding: 10px;
 }
 
-.color-liv2{
-    background-color: #E799c2;
+.txt-home{
+    font-size: 2rem;
+    color: white;
+}
+
+.btn-search{
+    background-color: #E10098 !important;
 }

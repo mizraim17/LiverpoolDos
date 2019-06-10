@@ -7,7 +7,7 @@ const TableProduct = (props)=> {
   return(
 
 
-      <Col m={4} s={12}  >
+      <Col m={4} s={12}  className="container color-liv2">
         <Card
           key={props.index}
           className='small red-txt'

@@ -3,11 +3,14 @@
     font-weight: bold;
   font-size: 1rem !important;
   color: #2f2f2f;
+}
 
+
+.color-liv2{
+    background-color: #E799c2;
 }
 
 .price{
     color: red;
    font-weight: lighter;
-
 }

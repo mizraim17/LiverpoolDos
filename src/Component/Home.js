@@ -3,21 +3,39 @@ import {Row,Button} from 'react-materialize'
 import axios from 'axios'
 import "../css/home.css"
 import TableProduct from "./TableProduct";
+import Loader from 'react-loader-spinner'
 
 class Home extends Component{
 
   state={
     word:"",
-    product: null
+    product: null,
+    loading:false
   }
 
   onChange= (e) => {
     this.setState({word:e.target.value})
+    e.preventDefault()
+    if(e.key==='Enter') {
+     this.findProduct()
+    }
+  }
+
+  test= (e) => {
+    e.preventDefault()
+    this.setState({word:e.target.value})
+
+    if(e.key==='Enter'){
+
+      console.log("%c tecleo enter","color:red" )
+      this.findProduct()
+    }
   }
 
   findProduct=()=>{
     let {word} = this.state;
     let find;
+    this.setState({loading:true})
     console.log("%c entro","color:green", word)
 
     axios.get(`https://www.liverpool.com.mx/tienda/?s=${word}&d3106047a194921c01969dfdec083925=json`)
@@ -29,7 +47,7 @@ class Home extends Component{
           console.log("entro a 0")
           window.Materialize.toast('Tú búsqueda no arrojo ningún resultado', 10000,'red')
         }
-
+        this.setState({loading:false})
       })
       .catch((err)=>{
 
@@ -38,20 +56,23 @@ class Home extends Component{
   }
 
   closeBar= (e)=>{
-
      document.getElementById('search').value=""
   }
 
   render() {
-    let {product}= this.state
+    let {product,loading}= this.state
     return(
       <>
       <nav>
         <div className="nav-wrapper color-liv1">
         <form>
           <div className="input-field">
-            <input id="search" type="search" required
-            onChange={this.onChange}
+            <input
+              id="search"
+              type="search"
+              required
+              onChange={this.onChange}
+
             />
               <label className="label-icon"  ><i className="material-icons">search</i></label>
               <i className="material-icons" onClick={this.closeBar}>close</i>
@@ -60,14 +81,18 @@ class Home extends Component{
       </div>
       </nav>
         <Row className="pad">
-          <Button onClick={this.findProduct}> buscar</Button>
+          <Button className="btn-search" onClick={this.findProduct}> buscar</Button>
         </Row>
         {
-
-        }
-
-        <Row className="container">
-
+          loading?
+            <Loader
+              type="Rings"
+              color="#ffffff"
+              height="400"
+              width="400"
+            />
+          :<>
+              <Row className="container ">
           {
             product
             ?
@@ -77,6 +102,7 @@ class Home extends Component{
                     .map((el,i)=>{
                       return(
                         <TableProduct
+                          className="color-liv2"
                           key={i}
                           nameProduct={el.productDisplayName}
                           priceProduct={el.maximumListPrice}
@@ -88,9 +114,11 @@ class Home extends Component{
                     })
                 }
               </>
-            : <p >Realiza la búsqueda de tú producto en la barra superior</p>
+            : <p className="txt-home">Realiza la búsqueda de tú producto en la barra superior</p>
           }
         </Row>
+            </>
+        }
       </>
     )
   }
