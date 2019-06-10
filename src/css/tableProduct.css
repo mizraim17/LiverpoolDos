@@ -1,10 +1,13 @@
 
-.cards{
-  height: 200;
-  color: #666666;
+.txtcard{
+    font-weight: bold;
+  font-size: 1rem !important;
+  color: #2f2f2f;
+
 }
 
-.apilar{
-    display: flex;
+.price{
+    color: red;
+   font-weight: lighter;
 
 }

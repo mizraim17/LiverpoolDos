@@ -17,19 +17,29 @@ class Home extends Component{
 
   findProduct=()=>{
     let {word} = this.state;
+    let find;
     console.log("%c entro","color:green", word)
 
     axios.get(`https://www.liverpool.com.mx/tienda/?s=${word}&d3106047a194921c01969dfdec083925=json`)
-      .then((res)=>{
-        // res.json(res.data)
-        console.log("%c liver","color:orange",res.data.contents[0].mainContent[3].contents[0].records)
-        this.setState({product:res.data.contents[0].mainContent[3].contents[0].records})
+      .then((res)=> {
+        console.log("%c liver", "color:orange", res.data.contents[0].mainContent[3].contents[0].records)
+        find=  res.data.contents[0].mainContent[3].contents[0].records
+        this.setState({product: res.data.contents[0].mainContent[3].contents[0].records})
+        if(find.length===0){
+          console.log("entro a 0")
+          window.Materialize.toast('Tú búsqueda no arrojo ningún resultado', 10000,'red')
+        }
+
       })
-      .catch(err=>console.log("err liver"))
+      .catch((err)=>{
+
+        console.log("err liver",err)
+      })
   }
 
-  componentWillMount() {
+  closeBar= (e)=>{
 
+     document.getElementById('search').value=""
   }
 
   render() {
@@ -44,7 +54,7 @@ class Home extends Component{
             onChange={this.onChange}
             />
               <label className="label-icon"  ><i className="material-icons">search</i></label>
-              <i className="material-icons">close</i>
+              <i className="material-icons" onClick={this.closeBar}>close</i>
           </div>
         </form>
       </div>
@@ -52,6 +62,9 @@ class Home extends Component{
         <Row className="pad">
           <Button onClick={this.findProduct}> buscar</Button>
         </Row>
+        {
+
+        }
 
         <Row className="container">
 
@@ -75,7 +88,7 @@ class Home extends Component{
                     })
                 }
               </>
-            : <p>Usa la barra de búsqueda para buscar tu producto</p>
+            : <p >Realiza la búsqueda de tú producto en la barra superior</p>
           }
         </Row>
       </>

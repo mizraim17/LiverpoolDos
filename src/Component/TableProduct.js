@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card,Table,Row,Col,CardTitle} from 'react-materialize'
+import {Card,Col,CardTitle} from 'react-materialize'
 import "../css/tableProduct.css"
 
 
@@ -7,26 +7,13 @@ const TableProduct = (props)=> {
   return(
 
 
-      <Col m={4} s={12} className="apilar">
+      <Col m={4} s={12}  >
         <Card
-          key ={props.i}
-          className="z-depth-2 cards "
-          header={
-
-            <CardTitle
-            className=" cards "
-            image={props.imageProduct}
-            title ="hola"
-
-            >
-              {props.priceProduct}
-            </CardTitle>
-          }
-          actions={
-            <a href="">   {props.priceProduct}</a>
-          }>
-          {props.nameProduct}
-
+          key={props.index}
+          className='small red-txt'
+          header={<CardTitle  className="txtcard" image={props.imageProduct}> <br/> </CardTitle>}
+          actions={[<a className="price">{props.priceProduct}</a>]}>
+         <p className="txtcard"> {props.nameProduct}</p>
         </Card>
       </Col>
 
