@@ -11,9 +11,18 @@ const TableProduct = (props)=> {
         <Card
           key={props.index}
           className='small red-txt'
-          header={<CardTitle  className="txtcard" image={props.imageProduct}> <br/> </CardTitle>}
-          actions={[<a className="price">{props.priceProduct}</a>]}>
-         <p className="txtcard"> {props.nameProduct}</p>
+          header={
+            <CardTitle  className="txtcard " image={String(props.product.smallImage)}>
+
+            </CardTitle>}
+          actions={
+            <>
+            <span className=" ">{props.product.productDisplayName}</span> <br/>
+            <span className=" txt-price">{`$ ${props.moneda}`}</span>
+
+            </>
+            }>
+
         </Card>
       </Col>
 

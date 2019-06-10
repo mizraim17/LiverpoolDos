@@ -40,7 +40,7 @@ class Home extends Component{
 
     axios.get(`https://www.liverpool.com.mx/tienda/?s=${word}&d3106047a194921c01969dfdec083925=json`)
       .then((res)=> {
-        console.log("%c liver", "color:orange", res.data.contents[0].mainContent[3].contents[0].records)
+        console.log("%c res request", "color:orange", res.data.contents[0].mainContent[2])
         find=  res.data.contents[0].mainContent[3].contents[0].records
         this.setState({product: res.data.contents[0].mainContent[3].contents[0].records})
         if(find.length===0){
@@ -50,9 +50,44 @@ class Home extends Component{
         this.setState({loading:false})
       })
       .catch((err)=>{
-
+        this.setState({loading:false})
+        window.Materialize.toast('Error intento contacte al administrador', 10000,'red')
         console.log("err liver",err)
       })
+  }
+
+   formatoMoneda=(number )=> {
+
+    let  number1 = number.toString(), result = '', estado = true;
+    if (parseInt(number1) < 0) {
+      estado = false;
+      number1 = parseInt(number1) * -1;
+      number1 = number1.toString();
+    }
+    if (number1.indexOf(',') == -1) {
+      while (number1.length > 3) {
+        result = ',' + '' + number1.substr(number1.length - 3) + '' + result;
+        number1 = number1.substring(0, number1.length - 3);
+      }
+      result = number1 + result;
+      if (estado == false) {
+        result = '-' + result;
+      }
+    }
+    else {
+      let  pos = number1.indexOf(',');
+      let numberInt = number1.substring(0, pos);
+      let numberDec = number1.substring(pos, number1.length);
+      while (numberInt.length > 3) {
+        result = ',' + '' + numberInt.substr(numberInt.length - 3) + '' + result;
+        numberInt = numberInt.substring(0, numberInt.length - 3);
+      }
+      result = numberInt + result + numberDec;
+      if (estado === false) {
+        result = '-' + result;
+      }
+    }
+    return(result) ;
   }
 
   closeBar= (e)=>{
@@ -70,6 +105,7 @@ class Home extends Component{
             <input
               id="search"
               type="search"
+              placeholder="Teclea el producto a buscar"
               required
               onChange={this.onChange}
 
@@ -103,10 +139,10 @@ class Home extends Component{
                       return(
                         <TableProduct
                           className="color-liv2"
-                          key={i}
-                          nameProduct={el.productDisplayName}
-                          priceProduct={el.maximumListPrice}
-                          imageProduct={el.smallImage}
+                          key={String(el.productId)}
+                          index={el.productId}
+                          product={el}
+                          moneda={this.formatoMoneda(parseFloat(el.productPrice))}
 
                         />
                         )
