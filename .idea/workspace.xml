@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81ecf7b0-14b0-4854-88f3-7fcde878a0c1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/tableProduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/tableProduct.css" afterDir="false" />
-    </list>
+    <list default="true" id="81ecf7b0-14b0-4854-88f3-7fcde878a0c1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -19,7 +13,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Component/Home.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="196">
@@ -27,6 +21,17 @@
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
                 <element signature="e#1620#2654#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../respaldo/liverpool-dos/src/Component/Home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,11 +56,6 @@
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/css/tableProduct.css">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -245,12 +245,12 @@
       <workItem from="1560144883219" duration="8371000" />
       <workItem from="1560185541792" duration="1371000" />
       <workItem from="1560196078313" duration="2969000" />
-      <workItem from="1560268285242" duration="16768000" />
+      <workItem from="1560268285242" duration="17065000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57622000" />
+    <option name="totallyTimeSpent" value="57919000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1425" y="0" width="1861" height="1080" extended-state="6" />
@@ -433,6 +433,15 @@
           <folding>
             <element signature="e#0#37#0" expanded="true" />
             <element signature="e#1620#2654#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../respaldo/liverpool-dos/src/Component/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
