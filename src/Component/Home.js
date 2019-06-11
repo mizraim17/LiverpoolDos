@@ -1,13 +1,15 @@
 import React,{Component} from "react"
-import {Row,Button} from 'react-materialize'
+import {Row, Button, Col, Card, Table} from 'react-materialize'
 import axios from 'axios'
 import "../css/home.css"
 import TableProduct from "./TableProduct";
 import Loader from 'react-loader-spinner'
+import TableHistory from "./TableHistory";
 
 class Home extends Component{
 
   state={
+    history:"",hisTemp:"",temp:[],
     word:"",
     product: null,
     loading:false
@@ -33,27 +35,39 @@ class Home extends Component{
   }
 
   findProduct=()=>{
-    let {word} = this.state;
-    let find;
+    let {word, temp, hisTemp} = this.state;
+    let find
     this.setState({loading:true})
-    console.log("%c entro","color:green", word)
+
+    console.log("word",word)
+
+      temp.push(word)
+      console.log('temp',temp)
+      localStorage.setItem("historySearch",JSON.stringify(temp))
+
 
     axios.get(`https://www.liverpool.com.mx/tienda/?s=${word}&d3106047a194921c01969dfdec083925=json`)
       .then((res)=> {
-        console.log("%c res request", "color:orange", res.data.contents[0].mainContent[2])
+        // console.log("%c res request", "color:orange", res.data.contents[0].mainContent[2])
         find=  res.data.contents[0].mainContent[3].contents[0].records
         this.setState({product: res.data.contents[0].mainContent[3].contents[0].records})
         if(find.length===0){
-          console.log("entro a 0")
+
           window.Materialize.toast('Tú búsqueda no arrojo ningún resultado', 10000,'red')
         }
-        this.setState({loading:false})
+
+        console.log("hisTemp", hisTemp)
+        this.setState({loading:false, hisTemp})
       })
       .catch((err)=>{
         this.setState({loading:false})
         window.Materialize.toast('Error intento contacte al administrador', 10000,'red')
-        console.log("err liver",err)
+
       })
+  }
+
+  browsingHistory= () =>{
+    console.log("entro al listado ")
   }
 
    formatoMoneda=(number )=> {
@@ -64,13 +78,13 @@ class Home extends Component{
       number1 = parseInt(number1) * -1;
       number1 = number1.toString();
     }
-    if (number1.indexOf(',') == -1) {
+    if (number1.indexOf(',') === -1) {
       while (number1.length > 3) {
         result = ',' + '' + number1.substr(number1.length - 3) + '' + result;
         number1 = number1.substring(0, number1.length - 3);
       }
       result = number1 + result;
-      if (estado == false) {
+      if (estado === false) {
         result = '-' + result;
       }
     }
@@ -90,12 +104,19 @@ class Home extends Component{
     return(result) ;
   }
 
+  componentWillMount() {
+    let {hisTemp,temp} = this.state
+    temp=JSON.parse(localStorage.getItem("historySearch"))
+    hisTemp=JSON.parse(localStorage.getItem("historySearch"))
+    this.setState({hisTemp,temp})
+  }
+
   closeBar= (e)=>{
      document.getElementById('search').value=""
   }
 
   render() {
-    let {product,loading}= this.state
+    let {product,loading,hisTemp}= this.state
     return(
       <>
       <nav>
@@ -150,7 +171,49 @@ class Home extends Component{
                     })
                 }
               </>
-            : <p className="txt-home">Realiza la búsqueda de tú producto en la barra superior</p>
+            :
+              <>
+                <Row>
+                  <Col s={12} m={6}>{console.log("**********",hisTemp)}
+                    {
+                      hisTemp
+                        ?<>
+                          <Card>
+                            <Table  responsive={true} className="white">
+                              <thead>
+                                <tr>
+                                  <th data-field="id">
+                                    Historial de búsquedas
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+
+                                  {
+                                    hisTemp.map((el, i)=>{
+                                      return(
+                                        <TableHistory
+                                          key={i}
+                                          articulos={el}
+                                        />
+                                      )
+                                    })
+                                  }
+                              </tbody>
+                            </Table>
+                          </Card>
+                        </>
+
+                        : "no"
+                    }
+                  </Col>
+                  <Col s={12} m={6}>
+                    <p className="txt-home">Realiza la búsqueda de tú producto en la barra superior</p>
+                  </Col>
+                </Row>
+              </>
+
+
           }
         </Row>
             </>

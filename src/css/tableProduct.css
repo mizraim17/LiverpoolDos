@@ -1,12 +1,8 @@
-
-
-
 .txt-price {
     padding-top: 40px;
     color: red;
     font-weight: bold;
     font-size: 1.5rem !important;
-
 }
 
 .margin{
@@ -18,7 +14,3 @@
     background-color: #E799c2;
 }
 
-.price{
-    color: red;
-   font-weight: lighter;
-}

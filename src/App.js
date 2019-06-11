@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import './App.css';
 import Home from "./Component/Home";
 import 'materialize-css/dist/css/materialize.css';
@@ -7,10 +6,6 @@ import 'materialize-css/dist/css/materialize.css';
 
 
 class App extends Component {
-
-  componentWillMount() {
-    // M.AutoInit();
-  }
 
   render() {
     return (
