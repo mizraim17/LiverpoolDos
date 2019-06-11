@@ -1,3 +1,11 @@
+### Búsqueda en  Liverpool
+
+Este proyecto facilita la búsqueda de artículos a través de la API de Liverpool, mediante una barra de búsqueda, la cual presenta en una card  los artículos que coinciden con el criterio de búsqueda, con los datos de "nombre del producto", "precio", "imagen".
+
+Se puede probar el funcionamiento sin instalar ya que esta alojado el deploy por el mismo githubPages en https://mizraim17.github.io/LiverpoolDos/
+
+o se puede clonar el proyecto y con  npm install instalar las dependecias y con  npm start iniciar el proyecyo
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
