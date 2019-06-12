@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6764f1ba26fd18f68d2a63ab22362fd3",
+    "revision": "0c3f5b6da25ac307ac86748f85828d6a",
     "url": "/LiverpoolDos/index.html"
   },
   {
-    "revision": "1ea4d015d73e1b473a19",
+    "revision": "1fdff48a59d5491db720",
     "url": "/LiverpoolDos/static/css/2.4e03fca6.chunk.css"
   },
   {
-    "revision": "6df559d838cccce33f3e",
+    "revision": "7bcc0c97459196a0190c",
     "url": "/LiverpoolDos/static/css/main.4f645065.chunk.css"
   },
   {
-    "revision": "1ea4d015d73e1b473a19",
-    "url": "/LiverpoolDos/static/js/2.c98e2adf.chunk.js"
+    "revision": "1fdff48a59d5491db720",
+    "url": "/LiverpoolDos/static/js/2.34d5dd98.chunk.js"
   },
   {
-    "revision": "6df559d838cccce33f3e",
-    "url": "/LiverpoolDos/static/js/main.8911ef8c.chunk.js"
+    "revision": "7bcc0c97459196a0190c",
+    "url": "/LiverpoolDos/static/js/main.ed43ae11.chunk.js"
   },
   {
     "revision": "5c03db199271fb7db82d",

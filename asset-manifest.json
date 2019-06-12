@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/LiverpoolDos/static/css/main.4f645065.chunk.css",
-    "main.js": "/LiverpoolDos/static/js/main.8911ef8c.chunk.js",
-    "main.js.map": "/LiverpoolDos/static/js/main.8911ef8c.chunk.js.map",
+    "main.js": "/LiverpoolDos/static/js/main.ed43ae11.chunk.js",
+    "main.js.map": "/LiverpoolDos/static/js/main.ed43ae11.chunk.js.map",
     "runtime~main.js": "/LiverpoolDos/static/js/runtime~main.9657c422.js",
     "runtime~main.js.map": "/LiverpoolDos/static/js/runtime~main.9657c422.js.map",
     "static/css/2.4e03fca6.chunk.css": "/LiverpoolDos/static/css/2.4e03fca6.chunk.css",
-    "static/js/2.c98e2adf.chunk.js": "/LiverpoolDos/static/js/2.c98e2adf.chunk.js",
-    "static/js/2.c98e2adf.chunk.js.map": "/LiverpoolDos/static/js/2.c98e2adf.chunk.js.map",
+    "static/js/2.34d5dd98.chunk.js": "/LiverpoolDos/static/js/2.34d5dd98.chunk.js",
+    "static/js/2.34d5dd98.chunk.js.map": "/LiverpoolDos/static/js/2.34d5dd98.chunk.js.map",
     "index.html": "/LiverpoolDos/index.html",
-    "precache-manifest.3721f58fbe74f28eff149f09e6de22f3.js": "/LiverpoolDos/precache-manifest.3721f58fbe74f28eff149f09e6de22f3.js",
+    "precache-manifest.001ae8bea453d3a3a51aaa0d76d1ee38.js": "/LiverpoolDos/precache-manifest.001ae8bea453d3a3a51aaa0d76d1ee38.js",
     "service-worker.js": "/LiverpoolDos/service-worker.js",
     "static/css/2.4e03fca6.chunk.css.map": "/LiverpoolDos/static/css/2.4e03fca6.chunk.css.map",
     "static/css/main.4f645065.chunk.css.map": "/LiverpoolDos/static/css/main.4f645065.chunk.css.map"
