@@ -86,10 +86,10 @@ class Home extends Component{
     let {hisTemp,temp} = this.state;
     hisTemp=JSON.parse(localStorage.getItem("historySearch"))
     this.setState({hisTemp})
-      if(hisTemp!==[]){
+      if(hisTemp!==null){
         console.log("entro a diferent de null")
         temp=JSON.parse(localStorage.getItem("historySearch"))
-
+        this.setState({temp})
       }
 
   }
