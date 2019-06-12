@@ -3,8 +3,6 @@ import './App.css';
 import Home from "./Component/Home";
 import 'materialize-css/dist/css/materialize.css';
 
-
-
 class App extends Component {
 
   render() {
@@ -14,8 +12,6 @@ class App extends Component {
       </div>
     );
   }
-
 }
-
 
 export default App;

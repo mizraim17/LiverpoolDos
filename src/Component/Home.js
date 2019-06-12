@@ -7,7 +7,6 @@ import Loader from 'react-loader-spinner'
 import TableHistory from "./TableHistory";
 
 class Home extends Component{
-
   state={
     history:"",hisTemp:"",temp:[],
     word:"",
@@ -17,57 +16,36 @@ class Home extends Component{
 
   onChange= (e) => {
     this.setState({word:e.target.value})
-    e.preventDefault()
+    e.preventDefault();
     if(e.key==='Enter') {
      this.findProduct()
     }
   }
 
-  test= (e) => {
-    e.preventDefault()
-    this.setState({word:e.target.value})
-
-    if(e.key==='Enter'){
-
-      console.log("%c tecleo enter","color:red" )
-      this.findProduct()
-    }
-  }
-
   findProduct=()=>{
     let {word, temp, hisTemp} = this.state;
-    let find
-    this.setState({loading:true})
-
-    console.log("word",word)
-
-      temp.push(word)
-      console.log('temp',temp)
-      localStorage.setItem("historySearch",JSON.stringify(temp))
+    let find;
+    this.setState({loading:true});
+    console.log("temp",temp)
+    temp.push(word);
+    localStorage.setItem("historySearch",JSON.stringify(temp))
 
 
     axios.get(`https://www.liverpool.com.mx/tienda/?s=${word}&d3106047a194921c01969dfdec083925=json`)
       .then((res)=> {
-        // console.log("%c res request", "color:orange", res.data.contents[0].mainContent[2])
         find=  res.data.contents[0].mainContent[3].contents[0].records
         this.setState({product: res.data.contents[0].mainContent[3].contents[0].records})
         if(find.length===0){
-
           window.Materialize.toast('Tú búsqueda no arrojo ningún resultado', 10000,'red')
         }
-
-        console.log("hisTemp", hisTemp)
         this.setState({loading:false, hisTemp})
       })
       .catch((err)=>{
+        console.log("error",err)
         this.setState({loading:false})
         window.Materialize.toast('Error intento contacte al administrador', 10000,'red')
 
       })
-  }
-
-  browsingHistory= () =>{
-    console.log("entro al listado ")
   }
 
    formatoMoneda=(number )=> {
@@ -105,10 +83,15 @@ class Home extends Component{
   }
 
   componentWillMount() {
-    let {hisTemp,temp} = this.state
-    temp=JSON.parse(localStorage.getItem("historySearch"))
+    let {hisTemp,temp} = this.state;
     hisTemp=JSON.parse(localStorage.getItem("historySearch"))
-    this.setState({hisTemp,temp})
+    this.setState({hisTemp})
+      if(hisTemp!==[]){
+        console.log("entro a diferent de null")
+        temp=JSON.parse(localStorage.getItem("historySearch"))
+
+      }
+
   }
 
   closeBar= (e)=>{
@@ -129,7 +112,6 @@ class Home extends Component{
               placeholder="Teclea el producto a buscar"
               required
               onChange={this.onChange}
-
             />
               <label className="label-icon"  ><i className="material-icons">search</i></label>
               <i className="material-icons" onClick={this.closeBar}>close</i>
@@ -141,54 +123,54 @@ class Home extends Component{
           <Button className="btn-search" onClick={this.findProduct}> buscar</Button>
         </Row>
         {
-          loading?
+          loading
+          ?
             <Loader
               type="Rings"
               color="#ffffff"
               height="400"
               width="400"
             />
-          :<>
-              <Row className="container ">
-          {
-            product
-            ?
-              <>
-                {
-                  product
+          :
+          <>
+            <Row className="container ">
+              {
+                product
+                ?
+                <>
+                  {
+                    product
                     .map((el,i)=>{
                       return(
                         <TableProduct
+                          key={i}
                           className="color-liv2"
-                          key={String(el.productId)}
                           index={el.productId}
                           product={el}
                           moneda={this.formatoMoneda(parseFloat(el.productPrice))}
-
                         />
                         )
-
-                    })
-                }
-              </>
-            :
-              <>
-                <Row>
-                  <Col s={12} m={6}>{console.log("**********",hisTemp)}
-                    {
-                      hisTemp
-                        ?<>
-                          <Card>
-                            <Table  responsive={true} className="white">
-                              <thead>
-                                <tr>
-                                  <th data-field="id">
-                                    Historial de búsquedas
-                                  </th>
-                                </tr>
-                              </thead>
-                              <tbody>
-
+                      })
+                    }
+                  </>
+                :
+                <>
+                  <Row>
+                      <Col s={12} m={6}>
+                        {
+                          hisTemp
+                          ?
+                          <>
+                            <Card>
+                              <Table  responsive={true} centered={true} className="white">
+                                <thead>
+                                  <tr>
+                                    <th data-field="id">
+                                      Historial de búsquedas
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
                                   {
                                     hisTemp.map((el, i)=>{
                                       return(
@@ -199,29 +181,41 @@ class Home extends Component{
                                       )
                                     })
                                   }
+                                </tbody>
+                              </Table>
+                            </Card>
+                          </>
+                          :
+                          <Card>
+                            <Table  responsive={true} centered={true} className="white">
+                              <thead>
+                              <tr>
+                                <th data-field="id">
+                                  Historial de búsquedas
+                                </th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                <stron>Aún no tienes historial de búsqueda</stron>
+                              </tr>
                               </tbody>
                             </Table>
                           </Card>
-                        </>
-
-                        : "no"
-                    }
-                  </Col>
-                  <Col s={12} m={6}>
-                    <p className="txt-home">Realiza la búsqueda de tú producto en la barra superior</p>
-                  </Col>
-                </Row>
-              </>
-
-
-          }
-        </Row>
-            </>
+                        }
+                      </Col>
+                      <Col s={12} m={6}>
+                        <p className="txt-home">Realiza la búsqueda de tú producto en la barra superior</p>
+                      </Col>
+                  </Row>
+                </>
+              }
+            </Row>
+          </>
         }
       </>
     )
   }
-
 }
 
 export default Home

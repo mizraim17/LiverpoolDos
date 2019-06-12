@@ -10,5 +10,4 @@ const TableHistory= ({articulos})=> {
   )
 }
 
-
-export default TableHistory
+export default TableHistory;
